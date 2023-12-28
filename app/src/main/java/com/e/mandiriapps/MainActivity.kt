@@ -19,26 +19,43 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
         handleLogin(binding)
+        handleRegister(binding)
 
         }
+
+    private fun toastMaker(text:String){
+        Toast.makeText(applicationContext,text, Toast.LENGTH_SHORT).show()
+    }
     private fun handleNavigation(){
-        val intent = Intent(this,UserInfoActivity::class.java)
+        val intent = Intent(this,HomeActivity::class.java)
         startActivity(intent)
         finish()
+    }
+    private  fun handleRegister(binding: ActivityMainBinding){
+        binding.btnRegisterFromLogin.setOnClickListener {
+            val intent = Intent(this,RegisterActivity::class.java)
+            startActivity(intent)
+        }
     }
     private fun handleLogin(binding:ActivityMainBinding){
         val text = binding.edtTxtPass.text
         val btn = binding.btnSubmit
         btn.setOnClickListener {
             if(text.isEmpty()){
-                binding.stvErrorPass.visibility= View.VISIBLE
-                Toast.makeText(applicationContext,"harap isi password", Toast.LENGTH_SHORT).show()
+                binding.stvErrorPass.visibility.apply {
+                    View.VISIBLE
+                }
+                toastMaker("harap isi password")
             }else if(text.toString()!="password123"){
-                binding.stvErrorPass.visibility= View.VISIBLE
-                Toast.makeText(applicationContext,"password salah", Toast.LENGTH_SHORT).show()
+                binding.stvErrorPass.visibility.apply {
+                    View.VISIBLE
+                }
+                toastMaker("password salah")
             }else{
-                binding.stvErrorPass.visibility= View.GONE
-                Toast.makeText(applicationContext,"selamat anda berhasil login", Toast.LENGTH_SHORT).show()
+                binding.stvErrorPass.visibility.apply {
+                    View.GONE
+                }
+                toastMaker("selamat anda berhasil login")
                 handleNavigation()
             }
         }

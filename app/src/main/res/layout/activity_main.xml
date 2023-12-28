@@ -11,12 +11,11 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="3250dp"
-        android:layout_height="325dp"
+        android:layout_width="3000dp"
+        android:layout_height="300dp"
         android:layout_gravity="center"
         android:layout_marginTop="100dp"
-        android:src="@drawable/livin_logo"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:src="@drawable/livin_logo" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -41,9 +40,19 @@
         android:layout_marginTop="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
+        android:background="#2196F3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="Login" />
+    <Button
+        android:id="@+id/btnRegisterFromLogin"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="#2196F3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register" />
 
     <TextView
         android:id="@+id/stvErrorPass"
