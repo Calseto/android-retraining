@@ -29,7 +29,7 @@ class HomeActivity: AppCompatActivity() {
     }
     private fun setDummySavingList():MutableList<SavingDepositModel>{
         return mutableListOf(
-            SavingDepositModel(savingName = "Tabungan", accountNumber = "123456789",R.drawable.card1),
+            SavingDepositModel(savingName = "Tabungan ", accountNumber = "123456789",R.drawable.card1),
             SavingDepositModel(savingName = "Tabungan Rencana", accountNumber = "987654321",R.drawable.card1),
             SavingDepositModel(savingName = "Deposito", accountNumber = "837495734",R.drawable.card1),
             SavingDepositModel(savingName = "Giro", accountNumber = "387420039",R.drawable.card1),
