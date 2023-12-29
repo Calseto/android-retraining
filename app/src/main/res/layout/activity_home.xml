@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidelineHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,11 +18,24 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
             <include
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 layout="@layout/component_header" />
+            <include
+                android:id="@+id/rvSavingHome"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                layout="@layout/component_saving_deposit"
+                android:layout_weight="1"
+                android:layout_marginBottom="20dp"/>
+            <include
+                android:id="@+id/rvEwalletHome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                layout="@layout/component_home_ewallet" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
