@@ -2,6 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="false"
+    tools:context=".HomeActivity"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.constraintlayout.widget.Guideline
@@ -25,17 +28,28 @@
                 android:layout_height="wrap_content"
                 layout="@layout/component_header" />
             <include
+                android:id="@+id/rvServiceMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/component_home_service_menu"/>
+            <include
                 android:id="@+id/rvSavingHome"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                layout="@layout/component_saving_deposit"
-                android:layout_weight="1"
-                android:layout_marginBottom="20dp"/>
+                android:layout_height="wrap_content"
+                layout="@layout/component_home_saving_deposit"
+                android:layout_marginBottom="10dp"/>
             <include
                 android:id="@+id/rvEwalletHome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 layout="@layout/component_home_ewallet" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/btnLogOut"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:contentDescription="logout"
+                android:layout_gravity="center_vertical"/>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

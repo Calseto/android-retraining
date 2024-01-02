@@ -20,7 +20,7 @@
         app:layout_constraintGuide_percent="0.75" />
 
     <ImageView
-        android:id="@+id/logoRegister"
+        android:id="@+id/ivLogoRegister"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:src="@drawable/livin_logo"
@@ -29,45 +29,45 @@
         app:layout_constraintTop_toTopOf="@id/guideLine_register" />
 
     <include
-        android:id="@+id/registerTxtNama"
+        android:id="@+id/edtTxtNamaRegister"
         layout="@layout/component_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:layout_marginHorizontal="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerTxtUmur"
-        app:layout_constraintTop_toBottomOf="@+id/logoRegister"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtUmurRegister"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogoRegister"
         tools:layout_editor_absoluteX="-37dp" />
 
     <include
-        android:id="@+id/registerTxtUmur"
+        android:id="@+id/edtTxtUmurRegister"
         layout="@layout/component_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerTxtAlamat"
-        app:layout_constraintTop_toBottomOf="@+id/registerTxtNama"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtAlamatRegister"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtNamaRegister"
         tools:layout_editor_absoluteX="50dp" />
 
     <include
-        android:id="@+id/registerTxtAlamat"
+        android:id="@+id/edtTxtAlamatRegister"
         layout="@layout/component_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
-        app:layout_constraintBottom_toTopOf="@+id/registerTxtGender"
-        app:layout_constraintTop_toBottomOf="@+id/registerTxtUmur"
+        app:layout_constraintBottom_toTopOf="@+id/edtTxtGenderRegister"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtUmurRegister"
         tools:layout_editor_absoluteX="50dp" />
 
     <include
-        android:id="@+id/registerTxtGender"
+        android:id="@+id/edtTxtGenderRegister"
         layout="@layout/component_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="50dp"
         android:layout_marginBottom="25dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonRegister"
-        app:layout_constraintTop_toBottomOf="@+id/registerTxtAlamat"
+        app:layout_constraintTop_toBottomOf="@+id/edtTxtAlamatRegister"
         tools:layout_editor_absoluteX="50dp" />
 
     <Button

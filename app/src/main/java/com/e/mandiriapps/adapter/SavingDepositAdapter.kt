@@ -9,7 +9,8 @@ import com.e.mandiriapps.model.EwalletModel
 import com.e.mandiriapps.model.SavingDepositModel
 
 class SavingDepositAdapter(
-    private val savingDepositData:MutableList<SavingDepositModel>
+    private val savingDepositData:MutableList<SavingDepositModel>,
+    private var maximumItems :Int = 2
 ):RecyclerView.Adapter<SavingDepositAdapter.SavingDepositViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavingDepositViewHolder {
         return SavingDepositViewHolder(
@@ -21,7 +22,7 @@ class SavingDepositAdapter(
         )
     }
 
-    override fun getItemCount()=if (savingDepositData.size>=5) 2 else savingDepositData.size
+    override fun getItemCount()=if (savingDepositData.size>=5) maximumItems else savingDepositData.size
 
     override fun onBindViewHolder(holder: SavingDepositViewHolder, position: Int) {
         holder.bind(savingDepositData[position])
@@ -30,8 +31,12 @@ class SavingDepositAdapter(
         RecyclerView.ViewHolder(itemBinding.root){
             fun bind(model:SavingDepositModel){
                 itemBinding.nameSavingTxt.text=model.savingName
-                itemBinding.accountNameTxt.text=model.accountNumber
+                itemBinding.tvAccountName.text=model.accountNumber
                 itemBinding.ivCardPic.setImageResource(model.imageCard)
         }
+    }
+    fun updateQuantitySize(sizeUpdate:Int){
+        maximumItems=sizeUpdate
+        notifyDataSetChanged()
     }
 }

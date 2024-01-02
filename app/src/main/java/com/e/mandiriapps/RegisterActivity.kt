@@ -20,10 +20,10 @@ class RegisterActivity : AppCompatActivity() {
 
     }
     private fun check(){
-        val nameVal = binding.registerTxtNama.edtTxtRegister.text
-        val umurVal = binding.registerTxtUmur.edtTxtRegister.text
-        val alamatVal = binding.registerTxtAlamat.edtTxtRegister.text
-        val genderVal = binding.registerTxtGender.edtTxtRegister.text
+        val nameVal = binding.edtTxtNamaRegister.edtTxtRegister.text
+        val umurVal = binding.edtTxtUmurRegister.edtTxtRegister.text
+        val alamatVal = binding.edtTxtAlamatRegister.edtTxtRegister.text
+        val genderVal = binding.edtTxtGenderRegister.edtTxtRegister.text
         binding.buttonRegister.setOnClickListener{
             if(nameVal.isEmpty() || alamatVal.isEmpty()||umurVal.isEmpty()||genderVal.isEmpty()){
                 Toast.makeText(this,"data harus diisi semua",Toast.LENGTH_SHORT).show()
