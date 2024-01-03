@@ -32,7 +32,7 @@ class LoginActivity : AppCompatActivity() {
         Toast.makeText(applicationContext,text, Toast.LENGTH_SHORT).show()
     }
     private fun handleNavigation(){
-        val intent = Intent(this, HomeMainActivity::class.java)
+        val intent = Intent(this, HomeActivity::class.java)
         startActivity(intent)
         finish()
     }
