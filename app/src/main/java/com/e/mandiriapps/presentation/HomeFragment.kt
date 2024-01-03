@@ -1,35 +1,43 @@
-package com.e.mandiriapps
+package com.e.mandiriapps.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
+import com.e.mandiriapps.R
 import com.e.mandiriapps.adapter.EwalletAdapter
 import com.e.mandiriapps.adapter.SavingDepositAdapter
 import com.e.mandiriapps.adapter.ServiceMenuAdapter
-import com.e.mandiriapps.databinding.ActivityHomeBinding
+import com.e.mandiriapps.databinding.FragmentHomeBinding
 import com.e.mandiriapps.helper.SharedPref
 import com.e.mandiriapps.model.EwalletModel
 import com.e.mandiriapps.model.SavingDepositModel
 import com.e.mandiriapps.model.ServiceModel
 
-class HomeActivity: AppCompatActivity() {
-    private lateinit var binding: ActivityHomeBinding
+
+class HomeFragment : Fragment() {
+    var _binding : FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
     private lateinit var  savingDepositAdapter: SavingDepositAdapter
     private lateinit var serviceMenuAdapter: ServiceMenuAdapter
     private lateinit var  listSavingDeposit:MutableList<SavingDepositModel>
     private lateinit var  listServiceMenu:MutableList<ServiceModel>
-    private lateinit var sharedPref: SharedPref
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        _binding = FragmentHomeBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        sharedPref= SharedPref(this)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         binding.rvEwalletHome.recyclerView.adapter= EwalletAdapter(setDummyWalletList())
 
         listSavingDeposit=setDummySavingList()
@@ -37,19 +45,10 @@ class HomeActivity: AppCompatActivity() {
         binding.rvSavingHome.recyclerView.adapter= savingDepositAdapter
 
         setupViewService()
-        setupLogOut()
-
         updateSavingDeposit()
     }
 
-    private fun setupLogOut() {
-        binding.btnLogOut.setOnClickListener {
-            sharedPref.clearToken()
-            val intent=Intent(this,MainActivity::class.java)
-            startActivity(intent)
-            finish()
-        }
-    }
+
 
     private fun setDummyWalletList():MutableList<EwalletModel>{
         return mutableListOf(
@@ -61,11 +60,19 @@ class HomeActivity: AppCompatActivity() {
     }
     private fun setDummySavingList():MutableList<SavingDepositModel>{
         return mutableListOf(
-            SavingDepositModel(savingName = "Tabungan", accountNumber = "123456789",R.drawable.card1),
-            SavingDepositModel(savingName = "Tabungan Rencana", accountNumber = "987654321",R.drawable.card1),
-            SavingDepositModel(savingName = "Deposito", accountNumber = "837495734",R.drawable.card1),
-            SavingDepositModel(savingName = "Giro", accountNumber = "387420039",R.drawable.card1),
-            SavingDepositModel(savingName = "Tabungan Goib", accountNumber = "696969696",R.drawable.card1)
+            SavingDepositModel(savingName = "Tabungan", accountNumber = "123456789",
+                R.drawable.card1
+            ),
+            SavingDepositModel(savingName = "Tabungan Rencana", accountNumber = "987654321",
+                R.drawable.card1
+            ),
+            SavingDepositModel(savingName = "Deposito", accountNumber = "837495734",
+                R.drawable.card1
+            ),
+            SavingDepositModel(savingName = "Giro", accountNumber = "387420039", R.drawable.card1),
+            SavingDepositModel(savingName = "Tabungan Goib", accountNumber = "696969696",
+                R.drawable.card1
+            )
 
         )
     }
@@ -85,15 +92,15 @@ class HomeActivity: AppCompatActivity() {
             ServiceModel(R.drawable.livin_logo,"Setor Tarik"),
 
 
-        )
+            )
     }
 
     private fun setupViewService(){
         listServiceMenu=setDummyServiceList()
-        serviceMenuAdapter=ServiceMenuAdapter(listServiceMenu)
+        serviceMenuAdapter= ServiceMenuAdapter(listServiceMenu)
         binding.rvServiceMenu.gvServiceMenu.adapter= serviceMenuAdapter
         serviceMenuAdapter.setOnClickMenu {
-            Toast.makeText(this,it.menuTitle,Toast.LENGTH_SHORT).show()
+            Toast.makeText(context,it.menuTitle, Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -113,4 +120,8 @@ class HomeActivity: AppCompatActivity() {
         }
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding=null
+    }
 }

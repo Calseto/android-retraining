@@ -1,9 +1,9 @@
-package com.e.mandiriapps
+package com.e.mandiriapps.presentation
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.e.mandiriapps.RegisterActivity.Companion.KEY_AlAMAT_VALUE
-import com.e.mandiriapps.RegisterActivity.Companion.KEY_NAME_VALUE
+import com.e.mandiriapps.presentation.RegisterActivity.Companion.KEY_AlAMAT_VALUE
+import com.e.mandiriapps.presentation.RegisterActivity.Companion.KEY_NAME_VALUE
 import com.e.mandiriapps.databinding.ActivityUserInfoBinding
 
 class UserInfoActivity : AppCompatActivity(){

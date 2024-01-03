@@ -1,29 +1,25 @@
-package com.e.mandiriapps
+package com.e.mandiriapps.presentation
 
-import android.app.Application
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
-import androidx.core.content.ContextCompat
-import com.e.mandiriapps.databinding.ActivityMainBinding
+import com.e.mandiriapps.databinding.ActivityLoginBinding
 import com.e.mandiriapps.helper.SharedPref
 import java.util.UUID
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var sharedPref: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val binding = ActivityMainBinding.inflate(layoutInflater)
+        val binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
 
-        sharedPref = SharedPref(context = this@MainActivity)
+        sharedPref = SharedPref(context = this@LoginActivity)
         checkTokenAvailability()
 
         handleLogin(binding)
@@ -36,17 +32,17 @@ class MainActivity : AppCompatActivity() {
         Toast.makeText(applicationContext,text, Toast.LENGTH_SHORT).show()
     }
     private fun handleNavigation(){
-        val intent = Intent(this,HomeActivity::class.java)
+        val intent = Intent(this, HomeMainActivity::class.java)
         startActivity(intent)
         finish()
     }
-    private  fun handleRegister(binding: ActivityMainBinding){
+    private  fun handleRegister(binding: ActivityLoginBinding){
         binding.btnRegisterMain.setOnClickListener {
-            val intent = Intent(this,RegisterActivity::class.java)
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
         }
     }
-    private fun handleLogin(binding:ActivityMainBinding){
+    private fun handleLogin(binding:ActivityLoginBinding){
         val text = binding.edtTxtPassMain.text
         val btn = binding.btnLoginMain
         btn.setOnClickListener {

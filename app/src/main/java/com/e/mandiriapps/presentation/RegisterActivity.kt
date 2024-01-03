@@ -1,11 +1,10 @@
-package com.e.mandiriapps
+package com.e.mandiriapps.presentation
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.e.mandiriapps.databinding.ActivityRegisterBinding
-import java.security.Key
 
 class RegisterActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterBinding
@@ -30,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
             }
             else{
                 Toast.makeText(this,"data telah diisi",Toast.LENGTH_SHORT).show()
-                val intent = Intent(this,UserInfoActivity::class.java)
+                val intent = Intent(this, UserInfoActivity::class.java)
                 intent.putExtra(KEY_NAME_VALUE,nameVal.toString())
                 intent.putExtra(KEY_UMUR_VALUE,umurVal.toString())
                 intent.putExtra(KEY_AlAMAT_VALUE,alamatVal.toString())

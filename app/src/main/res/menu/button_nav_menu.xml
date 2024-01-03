@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigationHome"
+        android:title="Beranda"
+        android:icon="@drawable/livin_logo"/>
+    <item
+        android:id="@+id/navigationPromo"
+        android:title="Promo"
+        android:icon="@drawable/outline_arrow_downward_24"/>
+    <item
+        android:id="@+id/navigationMessage"
+        android:title="Pesan"
+        android:icon="@drawable/livin_logo"/>
+    <item
+        android:id="@+id/navigationSettings"
+        android:title="Pengaturan"
+        android:icon="@drawable/livin_logo"/>
+    <item
+        android:id="@+id/navigationLogOut"
+        android:title="Log Out"
+        android:icon="@drawable/livin_logo"/>
+</menu>
