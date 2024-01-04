@@ -8,7 +8,7 @@ import com.e.mandiriapps.presentation.message.TransactionStatusFragment
 
 class MassageTabAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {
-        return 2 // Number of tabs
+        return 2
     }
 
     override fun createFragment(position: Int): Fragment {
