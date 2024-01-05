@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.FragmentSettingsBinding
+import com.e.mandiriapps.databinding.ItemSettingsBinding
 
 class SettingsFragment : Fragment() {
     var _binding : FragmentSettingsBinding? = null
@@ -28,12 +29,22 @@ class SettingsFragment : Fragment() {
 
     private fun setupViewSetting(){
         binding.apply {
+            val sumthing = componentSetIns
             componentSetIns.apply {
                 btnInstantSettings.apply {
                     tvItemSettings.text="Instant Access"
                 }
             }
             componentSetAcc.apply {
+//                val listOption = mutableListOf(
+//                    btnEmailSettings,
+//                    btnNameSettings,
+//                    btnLanguangeSettings,
+//                    btnRenewSettings
+//                )
+//                for(option in listOption){
+//                    option.tvItemSettings.text="hahaha isok"
+//                }
                 btnNameSettings.apply {
                     tvItemSettings.text = "Nama Panggilan"
                 }

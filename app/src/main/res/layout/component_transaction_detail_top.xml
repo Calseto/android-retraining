@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivLogoDetailTrans"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/livin_logo3"
+        android:layout_marginStart="25dp"
+
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTransTypeDetailTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Transaction Type"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toStartOf="@+id/ivLogoDetailTrans"
+        app:layout_constraintTop_toBottomOf="@+id/ivLogoDetailTrans" />
+
+    <TextView
+        android:id="@+id/tvStatusDetailTrans"
+        style="@style/BoldText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Transaction Status"
+        android:textSize="18dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="@+id/tvTransTypeDetailTrans"
+        app:layout_constraintTop_toBottomOf="@+id/tvTransTypeDetailTrans" />
+
+    <TextView
+        android:id="@+id/tvDateDetailTrans"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:paddingBottom="25dp"
+        android:text="Date"
+        android:textColor="@color/grey"
+        app:layout_constraintStart_toStartOf="@id/tvStatusDetailTrans"
+        app:layout_constraintTop_toBottomOf="@+id/tvStatusDetailTrans" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
