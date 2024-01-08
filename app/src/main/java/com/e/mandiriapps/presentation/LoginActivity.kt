@@ -51,7 +51,7 @@ class LoginActivity : AppCompatActivity() {
                     View.VISIBLE
                 }
                 toastMaker("harap isi password")
-            }else if(text.toString()!="password123"){
+            }else if(text.toString()!="pass"){
                 binding.stvErrorPassMain.visibility.apply {
                     View.VISIBLE
                 }

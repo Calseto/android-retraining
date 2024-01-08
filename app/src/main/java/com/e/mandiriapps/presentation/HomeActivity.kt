@@ -2,10 +2,12 @@ package com.e.mandiriapps.presentation
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.ActivityHomeBinding
+import com.e.mandiriapps.databinding.ComponentLogoutDialogueBinding
 import com.e.mandiriapps.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -47,13 +49,27 @@ class HomeActivity : AppCompatActivity(){
                     return@OnNavigationItemSelectedListener true
                 }
                 R.id.navigationLogOut-> {
-                    logOut()
+                    showLogoutDialog()
                     return@OnNavigationItemSelectedListener true
                 }
 
                 else->{return@OnNavigationItemSelectedListener true}
             }
         }
+
+    private fun showLogoutDialog() {
+        val dialogBinding:ComponentLogoutDialogueBinding
+        dialogBinding= ComponentLogoutDialogueBinding.inflate(layoutInflater)
+        val builder = AlertDialog.Builder(this)
+        val dialogView=dialogBinding.root
+        builder.setView(dialogView)
+
+        dialogBinding.btnLogoutDialog.setOnClickListener{
+            logOut()
+        }
+
+        builder.create().show()
+    }
 
     private fun logOut() {
             sharedPref.clearToken()
