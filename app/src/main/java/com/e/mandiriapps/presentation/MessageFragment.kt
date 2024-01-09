@@ -24,7 +24,6 @@ class MessageFragment : Fragment() {
 
         val viewPager: ViewPager2 = binding.viewPagerMessage
         val tabLayout: TabLayout = binding.tabNavMessage
-
         val adapter = MassageTabAdapter(requireActivity())
         viewPager.adapter = adapter
 

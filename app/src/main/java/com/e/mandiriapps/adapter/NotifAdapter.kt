@@ -10,7 +10,7 @@ import com.e.mandiriapps.model.SavingDepositModel
 import com.e.mandiriapps.model.ServiceModel
 
 class NotifAdapter(
-    private val data:MutableList<NotificationModel>
+    private val data:List<NotificationModel>
 ):RecyclerView.Adapter<NotifAdapter.NotifViewHolder>() {
     inner class NotifViewHolder(private val itemBinding: ItemNotificationBinding):
         RecyclerView.ViewHolder(itemBinding.root){

@@ -3,8 +3,7 @@ package com.e.mandiriapps.helper
 import android.content.Context
 import android.content.SharedPreferences
 
-class SharedPref(context:Context) {
-    private val sharedPreferences: SharedPreferences = context.getSharedPreferences(SHARED_PREF,Context.MODE_PRIVATE)
+class SharedPref(val sharedPreferences: SharedPreferences) {
 
 
     fun saveToken(token:String){
@@ -23,7 +22,6 @@ class SharedPref(context:Context) {
         }
     }
     companion object{
-        private const val SHARED_PREF="mypref"
         private const val TOKEN_KEY="token_key"
     }
 }

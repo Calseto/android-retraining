@@ -9,25 +9,14 @@ import androidx.fragment.app.Fragment
 import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.FragmentSettingsBinding
 import com.e.mandiriapps.databinding.ItemSettingsBinding
+import com.e.mandiriapps.presentation.basefragment.BaseFragement
 
-class SettingsFragment : Fragment() {
-    var _binding : FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentSettingsBinding.inflate(layoutInflater)
-        setupViewSetting()
-        return binding.root
+class SettingsFragment : BaseFragement<FragmentSettingsBinding>() {
+    override fun inflateBinding(): FragmentSettingsBinding {
+        return  FragmentSettingsBinding.inflate(layoutInflater)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-    }
-
-    private fun setupViewSetting(){
+    override fun setupView(binding: FragmentSettingsBinding){
         binding.apply {
             val sumthing = componentSetIns
             componentSetIns.apply {
@@ -108,11 +97,6 @@ class SettingsFragment : Fragment() {
                 }
             }
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding=null
     }
 
 }

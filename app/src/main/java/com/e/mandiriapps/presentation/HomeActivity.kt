@@ -10,10 +10,14 @@ import com.e.mandiriapps.databinding.ActivityHomeBinding
 import com.e.mandiriapps.databinding.ComponentLogoutDialogueBinding
 import com.e.mandiriapps.helper.SharedPref
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class HomeActivity : AppCompatActivity(){
     lateinit var binding: ActivityHomeBinding
-    private lateinit var sharedPref: SharedPref
+    @Inject
+    lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +25,6 @@ class HomeActivity : AppCompatActivity(){
         val view = binding.root
         setContentView(view)
 
-        sharedPref= SharedPref(this)
 
         binding.bttomNavigation.setOnNavigationItemSelectedListener (onNavigationItemSelectedListener)
         if(savedInstanceState==null) binding.bttomNavigation.selectedItemId=R.id.navigationHome

@@ -7,19 +7,20 @@ import android.view.View
 import android.widget.Toast
 import com.e.mandiriapps.databinding.ActivityLoginBinding
 import com.e.mandiriapps.helper.SharedPref
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.UUID
-
+import javax.inject.Inject
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var sharedPref: SharedPref
+    @Inject
+    lateinit var sharedPref: SharedPref
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val binding = ActivityLoginBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
 
-
-        sharedPref = SharedPref(context = this@LoginActivity)
         checkTokenAvailability()
 
         handleLogin(binding)
