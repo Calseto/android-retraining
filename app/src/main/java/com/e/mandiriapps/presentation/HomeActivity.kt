@@ -9,6 +9,8 @@ import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.ActivityHomeBinding
 import com.e.mandiriapps.databinding.ComponentLogoutDialogueBinding
 import com.e.mandiriapps.helper.SharedPref
+import com.e.mandiriapps.presentation.home.HomeFragment
+import com.e.mandiriapps.presentation.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject

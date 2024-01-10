@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.e.mandiriapps.databinding.ItemEwalletBinding
 import com.e.mandiriapps.model.EwalletModel
 
-class EwalletAdapter(private val listEwallet:MutableList<EwalletModel>):RecyclerView.Adapter<EwalletAdapter.ViewHolder>(){
+class EwalletAdapter(private val listEwallet:List<EwalletModel>):RecyclerView.Adapter<EwalletAdapter.ViewHolder>(){
 
     inner class ViewHolder(private val itemBinding: ItemEwalletBinding): RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(ewallet:EwalletModel){

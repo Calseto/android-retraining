@@ -1,4 +1,4 @@
-package com.e.mandiriapps.presentation.message
+package com.e.mandiriapps.presentation.message.notification
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.e.mandiriapps.adapter.NotifAdapter
 import com.e.mandiriapps.databinding.FragmentNotificationBinding
-import com.e.mandiriapps.model.NotificationModel
-import com.e.mandiriapps.presentation.viewmodel.NotificationViewModel
+import com.e.mandiriapps.presentation.message.notification.viewmodel.NotificationViewModel
 
 class NotificationFragment :Fragment(){
     private var _binding : FragmentNotificationBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel:NotificationViewModel by viewModels()
+    private val viewModel: NotificationViewModel by viewModels()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

@@ -3,8 +3,8 @@ package com.e.mandiriapps.adapter
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.e.mandiriapps.presentation.message.NotificationFragment
-import com.e.mandiriapps.presentation.message.TransactionStatusFragment
+import com.e.mandiriapps.presentation.message.notification.NotificationFragment
+import com.e.mandiriapps.presentation.message.transactionstatus.TransactionStatusFragment
 
 class MassageTabAdapter (fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
     override fun getItemCount(): Int {

@@ -1,4 +1,4 @@
-package com.e.mandiriapps.presentation.viewmodel
+package com.e.mandiriapps.presentation.message.notification.viewmodel
 
 import android.content.res.Resources
 import androidx.lifecycle.LiveData
@@ -11,7 +11,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class NotificationViewModel @Inject constructor():ViewModel() {
-    private val _notifData = MutableLiveData<List<NotificationModel>>()
+    private val _notifData = MutableLiveData<List<NotificationModel>>() 
     val notifData : LiveData<List<NotificationModel>> get() = _notifData
 
 

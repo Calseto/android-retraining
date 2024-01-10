@@ -4,14 +4,12 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.ItemTransactionBinding
-import com.e.mandiriapps.model.ServiceModel
 import com.e.mandiriapps.model.Status
 import com.e.mandiriapps.model.TransactionStatusModel
 
 class TransactionStatusAdapter(
-    private var data:MutableList<TransactionStatusModel>,
+    private var data:List<TransactionStatusModel>,
     private val onClickMenu: (data:TransactionStatusModel)->Unit={}
 ): RecyclerView.Adapter<TransactionStatusAdapter.TransactionStatusViewHolder>() {
     inner class TransactionStatusViewHolder(private val itemBinding: ItemTransactionBinding):
@@ -46,7 +44,7 @@ class TransactionStatusAdapter(
         }
     }
 
-    fun filterTransactionData(updateData:MutableList<TransactionStatusModel>){
+    fun updateData(updateData:List<TransactionStatusModel>){
         this.data = updateData
         notifyDataSetChanged()
     }

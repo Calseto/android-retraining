@@ -16,7 +16,7 @@ class SettingsFragment : BaseFragement<FragmentSettingsBinding>() {
         return  FragmentSettingsBinding.inflate(layoutInflater)
     }
 
-    override fun setupView(binding: FragmentSettingsBinding){
+    override fun setupView(){
         binding.apply {
             val sumthing = componentSetIns
             componentSetIns.apply {

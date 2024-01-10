@@ -9,7 +9,7 @@ import com.e.mandiriapps.model.SavingDepositModel
 import com.e.mandiriapps.model.ServiceModel
 
 class ServiceMenuAdapter (
-    private val serviceMenuData:MutableList<ServiceModel>
+    private val serviceMenuData:List<ServiceModel>
 ):RecyclerView.Adapter<ServiceMenuAdapter.ServiceMenuViewHolder>() {
 
     private var _onClickMenu: (ServiceModel)->Unit={}

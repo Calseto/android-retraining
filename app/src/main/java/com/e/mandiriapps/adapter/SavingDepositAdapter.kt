@@ -9,7 +9,7 @@ import com.e.mandiriapps.model.EwalletModel
 import com.e.mandiriapps.model.SavingDepositModel
 
 class SavingDepositAdapter(
-    private val savingDepositData:MutableList<SavingDepositModel>,
+    private val savingDepositData:List<SavingDepositModel>,
     private var maximumItems :Int = 2
 ):RecyclerView.Adapter<SavingDepositAdapter.SavingDepositViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SavingDepositViewHolder {

@@ -11,22 +11,25 @@ import com.e.mandiriapps.databinding.FragmentSettingsBinding
 
 abstract class BaseFragement<T:ViewBinding> : Fragment() {
     var _binding :T? = null
-    private val binding get() = _binding!!
+    protected val binding get() = _binding!!
 
     abstract fun inflateBinding() : T
+    abstract fun setupView()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         _binding = inflateBinding()
-        setupView(binding)
+        setupView()
         return binding.root
     }
-    abstract fun setupView(binding: T);
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding=null
