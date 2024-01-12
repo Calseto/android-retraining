@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.ActivityHomeBinding
 import com.e.mandiriapps.databinding.ComponentLogoutDialogueBinding
-import com.e.mandiriapps.helper.SharedPref
 import com.e.mandiriapps.presentation.home.HomeFragment
 import com.e.mandiriapps.presentation.login.LoginActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -18,8 +17,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(){
     lateinit var binding: ActivityHomeBinding
-    @Inject
-    lateinit var sharedPref: SharedPref
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,7 +74,7 @@ class HomeActivity : AppCompatActivity(){
     }
 
     private fun logOut() {
-            sharedPref.clearToken()
+//            sharedPref.clearToken()
             val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()

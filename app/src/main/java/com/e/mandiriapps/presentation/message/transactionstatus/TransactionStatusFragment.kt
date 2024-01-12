@@ -13,7 +13,9 @@ import com.e.mandiriapps.databinding.FragmentTransactionStatusBinding
 import com.e.mandiriapps.model.TransactionStatusModel
 import com.e.mandiriapps.presentation.detailtransaction.TransactionDetailActivity
 import com.e.mandiriapps.presentation.message.transactionstatus.viewmodel.TransactionStatusViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class TransactionStatusFragment :Fragment() {
     var _binding : FragmentTransactionStatusBinding? = null
     private var _adapter: TransactionStatusAdapter? = null

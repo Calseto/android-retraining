@@ -9,7 +9,9 @@ import androidx.fragment.app.viewModels
 import com.e.mandiriapps.adapter.NotifAdapter
 import com.e.mandiriapps.databinding.FragmentNotificationBinding
 import com.e.mandiriapps.presentation.message.notification.viewmodel.NotificationViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class NotificationFragment :Fragment(){
     private var _binding : FragmentNotificationBinding? = null
     private val binding get() = _binding!!

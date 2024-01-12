@@ -1,14 +1,17 @@
 package com.e.mandiriapps.presentation.login
 
+import android.content.Context
 import android.content.Intent
+import android.graphics.Color
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.fragment.app.viewModels
 import com.e.mandiriapps.databinding.ActivityLoginBinding
-import com.e.mandiriapps.helper.SharedPref
 import com.e.mandiriapps.presentation.HomeActivity
 import com.e.mandiriapps.presentation.RegisterActivity
 import com.e.mandiriapps.presentation.home.viewmodel.HomeViewModel
@@ -19,8 +22,6 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var sharedPref: SharedPref
     private val viewModel: LoginViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +29,9 @@ class LoginActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-        checkTokenAvailability()
+        setTransparentStatusBar()
+
+        checkIfAlreadyLogin()
 
         handleLogin(binding)
         handleRegister(binding)
@@ -56,29 +59,50 @@ class LoginActivity : AppCompatActivity() {
             val text = binding.edtTxtPassMain.text.toString()
             viewModel.checkPassword(text)
         }
-
+        viewModel.toastMessage.observe(this){
+            it.toToast()
+        }
         viewModel.loginResult.observe(this){ result ->
             when (result) {
                 LoginViewModel.LoginResult.EMPTY_PASSWORD -> {
                     binding.stvErrorPassMain.visibility = View.VISIBLE
-                    toastMaker("Harap isi password")
                 }
                 LoginViewModel.LoginResult.INCORRECT_PASSWORD -> {
                     binding.stvErrorPassMain.visibility = View.VISIBLE
-                    toastMaker("Password salah")
                 }
                 LoginViewModel.LoginResult.CORRECT_PASSWORD -> {
                     binding.stvErrorPassMain.visibility = View.GONE
-                    toastMaker("Selamat, Anda berhasil login")
+                    viewModel.saveNewToken()
                     handleNavigation()
                 }
             }
         }
     }
-    private fun checkTokenAvailability(){
-        val token = sharedPref.getToken()
-        if (!token.isEmpty()){
-            handleNavigation()
+
+    private fun checkIfAlreadyLogin(){
+        viewModel.checkTokenAvailability()
+        viewModel.tokenAvaibility.observe(this){avaibility->
+            if (avaibility){
+                handleNavigation()
+            }
+        }
+    }
+
+    private fun String.toToast(){
+        toastMaker(this)
+    }
+
+
+    private fun setTransparentStatusBar() {
+        window.apply {
+            // Enable transparent status bar
+            decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+            statusBarColor = Color.TRANSPARENT
+
+            // Optional: Handle dark icons on light background
+            decorView.systemUiVisibility =
+                decorView.systemUiVisibility or View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR
+
         }
     }
 }

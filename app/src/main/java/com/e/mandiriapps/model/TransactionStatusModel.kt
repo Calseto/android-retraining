@@ -11,7 +11,7 @@ data class TransactionStatusModel(
     val titleTransaction:String,
     val subtitleTransaction:String,
     val status:Int,
-    val nominal:String,
+    val nominal:String?,
     val image: Int
 ):Parcelable{
     // Tanyain Besok

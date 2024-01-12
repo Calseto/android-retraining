@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.e.mandiriapps">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="com.example.mandiriapps.base.App"
         android:allowBackup="true"

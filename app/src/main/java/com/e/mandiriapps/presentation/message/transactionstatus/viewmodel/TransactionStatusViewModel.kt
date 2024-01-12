@@ -6,17 +6,20 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.e.mandiriapps.R
+import com.e.mandiriapps.data.network.usecase.GetAllTransactionUseCase
 import com.e.mandiriapps.model.TransactionStatusModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TransactionStatusViewModel @Inject constructor() :ViewModel() {
+class TransactionStatusViewModel @Inject constructor(private val getAllTransactionUseCase: GetAllTransactionUseCase) :ViewModel() {
     private val _TransactionStatusDatas = MutableLiveData<List<TransactionStatusModel>>()
     val TransactionStatusDatas = _TransactionStatusDatas
+    private var remoteList :List<TransactionStatusModel> = listOf()
 
     fun updateData()=viewModelScope.launch{
+        remoteList=getAllTransactionUseCase.getAllTransaction()
         _TransactionStatusDatas.postValue(populateDataTransactionStatus())
     }
 
@@ -28,7 +31,7 @@ class TransactionStatusViewModel @Inject constructor() :ViewModel() {
         }
     }
     private fun populateDataTransactionStatus(): MutableList<TransactionStatusModel> {
-        return mutableListOf(
+        val allList = mutableListOf(
             TransactionStatusModel(
                 date = "3 Januari 2024",
                 titleTransaction = "E-Money",
@@ -81,5 +84,7 @@ class TransactionStatusViewModel @Inject constructor() :ViewModel() {
                 image = R.drawable.wallet_alt_svgrepo_com
             )
         )
+        allList.addAll(remoteList)
+        return allList
     }
 }

@@ -4,22 +4,27 @@ import android.content.res.Resources
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.e.mandiriapps.R
+import com.e.mandiriapps.data.network.usecase.GetAllTransactionUseCase
 import com.e.mandiriapps.model.NotificationModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NotificationViewModel @Inject constructor():ViewModel() {
-    private val _notifData = MutableLiveData<List<NotificationModel>>() 
+class NotificationViewModel @Inject constructor(
+): ViewModel() {
+    private val _notifData = MutableLiveData<List<NotificationModel>>()
     val notifData : LiveData<List<NotificationModel>> get() = _notifData
 
 
-    fun updateData(resources:Resources){
+    fun updateData(resources: Resources){
         _notifData.postValue(setDummyData(resources))
+
     }
 
-    private fun setDummyData(resources:Resources):MutableList<NotificationModel> {
+    private fun setDummyData(resources: Resources):MutableList<NotificationModel> {
         return mutableListOf<NotificationModel>(
             NotificationModel("Transaksi Tarik Tunai Berhasil", resources.getString(R.string.lorem_ipsum),"9 Nov"),
             NotificationModel("Transaksi Tarik Tunai Berhasil", resources.getString(R.string.lorem_ipsum),"12 Nov"),
