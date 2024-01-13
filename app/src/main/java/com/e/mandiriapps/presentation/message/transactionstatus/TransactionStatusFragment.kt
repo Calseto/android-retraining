@@ -1,63 +1,56 @@
 package com.e.mandiriapps.presentation.message.transactionstatus
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.e.mandiriapps.adapter.TransactionStatusAdapter
 import com.e.mandiriapps.databinding.FragmentTransactionStatusBinding
 import com.e.mandiriapps.model.TransactionStatusModel
+import com.e.mandiriapps.presentation.basefragment.BaseFragment
 import com.e.mandiriapps.presentation.detailtransaction.TransactionDetailActivity
 import com.e.mandiriapps.presentation.message.transactionstatus.viewmodel.TransactionStatusViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class TransactionStatusFragment :Fragment() {
-    var _binding : FragmentTransactionStatusBinding? = null
+class TransactionStatusFragment :BaseFragment<FragmentTransactionStatusBinding>() {
+
     private var _adapter: TransactionStatusAdapter? = null
-    private lateinit var _data: List<TransactionStatusModel>
-    private val binding get() = _binding!!
-
     private val viewModel : TransactionStatusViewModel by viewModels()
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentTransactionStatusBinding.inflate(layoutInflater)
 
-        setupViewTransactionStatus()
-        return binding.root
+    override fun inflateBinding(): FragmentTransactionStatusBinding {
+        return FragmentTransactionStatusBinding.inflate(layoutInflater)
     }
 
-
-    private fun setupViewTransactionStatus() {
+    override fun setupView() {
+        setupTransactionStatusSpinner()
+        filterTransactionOnSpinnerChange()
         viewModel.updateData()
-        viewModel.TransactionStatusDatas.observe(viewLifecycleOwner){
-            _data=it
-            _adapter = TransactionStatusAdapter(
-                data = _data,
-                onClickMenu = {model->
-                    TransactionDetailActivity.navigateToDetailTransaction(
-                        activity = requireActivity(),
-                        data = model
-                    )
-                }
-            )
-            binding.componentTransactionStatus
-                .rvTransactionStatus.adapter= _adapter
-        }
+        observeForSpinnerChange()
     }
 
+    private fun observeForSpinnerChange(){
+        viewModel.transactionStatusDatas.observe(viewLifecycleOwner,::setTransactionData)
 
+    }
+    private fun setTransactionData(data:List<TransactionStatusModel>){
+        _adapter = TransactionStatusAdapter(
+            data = data,
+            onClickMenu = {model->
+                navigateToDetailTransaction(model)
+            }
+        )
+        binding.componentTransactionStatus
+            .rvTransactionStatus.adapter= _adapter
+    }
+    private fun navigateToDetailTransaction(model:TransactionStatusModel){
+        TransactionDetailActivity.navigateToDetailTransaction(
+            activity = requireActivity(),
+            data = model
+        )
+    }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
+    private fun setupTransactionStatusSpinner(){
         val items = arrayOf("Semua","E-Money","Qris","Wallet")
         binding.spFilterTransaction.adapter =
             ArrayAdapter(
@@ -65,6 +58,8 @@ class TransactionStatusFragment :Fragment() {
                 com.google.android.material.R.layout.support_simple_spinner_dropdown_item,
                 items
             )
+    }
+    private fun filterTransactionOnSpinnerChange(){
         binding.spFilterTransaction.onItemSelectedListener =
             object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(
@@ -76,7 +71,7 @@ class TransactionStatusFragment :Fragment() {
                     val spinnerValue = parent?.getItemAtPosition(position).toString()
                     binding.tvFilter.text=spinnerValue
                     if (position==0) {
-                        _adapter?.updateData(_data)
+                        _adapter?.updateData(viewModel.getAllTransaction())
                     }else{
                         val filteredData= viewModel.filterdata(spinnerValue)
                         _adapter?.updateData(filteredData)
@@ -87,11 +82,6 @@ class TransactionStatusFragment :Fragment() {
                 }
 
             }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding =null
     }
 
 }

@@ -10,15 +10,11 @@ import android.view.View
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.activity.viewModels
-import androidx.fragment.app.viewModels
 import com.e.mandiriapps.databinding.ActivityLoginBinding
 import com.e.mandiriapps.presentation.HomeActivity
 import com.e.mandiriapps.presentation.RegisterActivity
-import com.e.mandiriapps.presentation.home.viewmodel.HomeViewModel
 import com.e.mandiriapps.presentation.login.viewmodel.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.UUID
-import javax.inject.Inject
 @AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
 

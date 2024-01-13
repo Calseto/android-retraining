@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/ivPromo"
+        android:layout_width="350dp"
+        android:layout_height="400dp"
+        android:scaleType="fitXY"
+        android:layout_marginBottom="75dp"
+        android:src="@drawable/livin_logo3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginHorizontal="25dp"
+        app:layout_constraintBottom_toBottomOf="@id/ivPromo"
+        app:layout_constraintEnd_toEndOf="@id/ivPromo"
+        app:layout_constraintStart_toStartOf="@id/ivPromo"
+        app:layout_constraintTop_toBottomOf="@id/ivPromo">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tvTitlePromoItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Promo Title"
+                style="@style/BoldText"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/lvDueContainerPromoItem"
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvTitlePromoItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:src="@drawable/livin_logo3"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:text="Berlaku sampai :"/>
+                <TextView
+                    android:id="@+id/tvDueDatePromoItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="25dp"
+                    android:gravity="end"
+                    android:text="Tanggal"/>
+
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDescPromoItem"
+                android:layout_marginTop="10dp"
+                android:textSize="14sp"
+                android:maxLines="5"
+                android:ellipsize="end"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="wrap_content"
+                android:text="Descripition"
+                app:layout_constraintStart_toStartOf="@id/tvTitlePromoItem"
+                app:layout_constraintTop_toBottomOf="@id/lvDueContainerPromoItem"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

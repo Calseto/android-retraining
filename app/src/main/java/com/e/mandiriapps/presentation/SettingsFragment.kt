@@ -1,17 +1,10 @@
 package com.e.mandiriapps.presentation
 
 import android.graphics.Color
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import com.e.mandiriapps.R
 import com.e.mandiriapps.databinding.FragmentSettingsBinding
-import com.e.mandiriapps.databinding.ItemSettingsBinding
-import com.e.mandiriapps.presentation.basefragment.BaseFragement
+import com.e.mandiriapps.presentation.basefragment.BaseFragment
 
-class SettingsFragment : BaseFragement<FragmentSettingsBinding>() {
+class SettingsFragment : BaseFragment<FragmentSettingsBinding>() {
     override fun inflateBinding(): FragmentSettingsBinding {
         return  FragmentSettingsBinding.inflate(layoutInflater)
     }

@@ -1,14 +1,9 @@
 package com.e.mandiriapps.presentation.home
 
-import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import com.e.mandiriapps.R
 import com.e.mandiriapps.adapter.EwalletAdapter
 import com.e.mandiriapps.adapter.SavingDepositAdapter
 import com.e.mandiriapps.adapter.ServiceMenuAdapter
@@ -16,12 +11,12 @@ import com.e.mandiriapps.databinding.FragmentHomeBinding
 import com.e.mandiriapps.model.EwalletModel
 import com.e.mandiriapps.model.SavingDepositModel
 import com.e.mandiriapps.model.ServiceModel
-import com.e.mandiriapps.presentation.basefragment.BaseFragement
+import com.e.mandiriapps.presentation.basefragment.BaseFragment
 import com.e.mandiriapps.presentation.home.viewmodel.HomeViewModel
 
 
 
-class HomeFragment : BaseFragement<FragmentHomeBinding>() {
+class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
     private val viewModel:HomeViewModel by viewModels()
 

@@ -8,20 +8,17 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.e.mandiriapps.adapter.MassageTabAdapter
 import com.e.mandiriapps.databinding.FragmentMessageBinding
+import com.e.mandiriapps.presentation.basefragment.BaseFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 
-class MessageFragment : Fragment() {
-    var _binding : FragmentMessageBinding? = null
-    private val binding get() = _binding!!
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        _binding = FragmentMessageBinding.inflate(layoutInflater)
+class MessageFragment : BaseFragment<FragmentMessageBinding>() {
+    override fun inflateBinding(): FragmentMessageBinding {
+        return FragmentMessageBinding.inflate(layoutInflater)
+    }
 
+    override fun setupView() {
         val viewPager: ViewPager2 = binding.viewPagerMessage
         val tabLayout: TabLayout = binding.tabNavMessage
         val adapter = MassageTabAdapter(requireActivity())
@@ -35,16 +32,6 @@ class MessageFragment : Fragment() {
                 else -> null
             }
         }.attach()
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding=null
-    }
 }

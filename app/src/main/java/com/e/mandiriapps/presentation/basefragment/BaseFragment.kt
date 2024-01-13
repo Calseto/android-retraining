@@ -1,21 +1,26 @@
-package com.e.mandiriapps.presentation
+package com.e.mandiriapps.presentation.basefragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.e.mandiriapps.databinding.FragmentPromoBinding
+import androidx.viewbinding.ViewBinding
 
-class PromoFragment : Fragment() {
-    var _binding : FragmentPromoBinding? = null
-    private val binding get() = _binding!!
+abstract class BaseFragment<T:ViewBinding> : Fragment() {
+    var _binding :T? = null
+    protected val binding get() = _binding!!
+
+    abstract fun inflateBinding() : T
+    abstract fun setupView()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPromoBinding.inflate(layoutInflater)
+        _binding = inflateBinding()
+        setupView()
         return binding.root
     }
 

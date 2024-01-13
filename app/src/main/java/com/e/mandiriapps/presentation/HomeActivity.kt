@@ -10,9 +10,9 @@ import com.e.mandiriapps.databinding.ActivityHomeBinding
 import com.e.mandiriapps.databinding.ComponentLogoutDialogueBinding
 import com.e.mandiriapps.presentation.home.HomeFragment
 import com.e.mandiriapps.presentation.login.LoginActivity
+import com.e.mandiriapps.presentation.promo.PromoFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeActivity : AppCompatActivity(){
